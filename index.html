@@ -1,0 +1,307 @@
+---
+---
+<html>
+	<head>
+		<title>Jam &amp; Kalender Digital</title>
+		<script type='text/javascript'>
+			sW = screen.width;
+			sH = screen.height;
+			window.moveTo(sW, sH);
+			window.resizeTo(464, 464);
+		</script>
+		<hta:application
+			applicationName="jam&kalender"
+			border="thin"
+			contextMenu="no"
+			icon="kalender.ico"
+			id="382511010101101011"
+			innerBorder="no"
+			maximizeButton="no"
+			scroll="no"
+			selection="no"
+			singleInstance="yes"
+			version="3.8.2.5"/>
+		<meta http-equiv='MSThemeCompatible' content='yes'/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+		<style type='text/css'>
+			body, html {
+                width: 100%;
+                margin 0;
+            }
+            table {
+				width: 100%;
+                max-width: 480px;
+                margin: 0 auto;
+				height: auto;
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+				font-weight: normal;
+				font-size: 14px;
+				cursor: default;
+			}
+
+			td {
+				width: 64px;
+				height: 32px;
+				background-color: #fff;
+				text-align: center;
+			}
+
+			input {
+				width: 28px;
+				height: 24px;
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+				font-weight: normal;
+				font-size: 14px;
+				cursor: pointer;
+			}
+
+			.myh {
+				width: 196px;
+				font-size: 16px;
+				color: #555;
+                font-weight: bold;
+			}
+
+			.dy,.dyh {
+				color: blue;
+			}
+
+			.jm,.jmh {
+				color: green;
+			}
+
+			.st,.sth {
+				color: purple;
+			}
+
+			.mg,.mgh {
+				color: red;
+			}
+
+			.dy,.jm,.st,.mg {
+				height: 64px;
+				font-size: 12px;
+			}
+
+			.dyh,.jmh,.sth,.mgh {
+				font-size: 14px;
+			}
+
+			.clk {
+				width: 196px;
+				height: 64px;
+				font-size: 44px;
+				color: #777;
+			}
+
+			.dte {
+				width: 130px;
+				font-size: 16px;
+				color: #555;
+			}
+            .button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            color: #333;
+            background-color: #efefef;
+            text-align: center;
+            cursor: pointer;
+            }
+		</style>
+	</head>
+	<body topMargin='0' leftMargin='0' onSelectStart='return false;' onContextMenu='return false;'>
+		<table cellSpacing='0' cellPadding='0'>
+			<tr>
+				<td colSpan='2' style='width: 130px;'>
+					<input type='button'class="button" onClick='chgMth(0, 100);' title='-100 tahun' value='&laquo;'/>
+					<input type='button'class="button" onClick='chgMth(0, 10);' title='-10 tahun' value='&laquo;'/>
+					<input type='button'class="button" onClick='chgMth(0, 1);' title='-1 tahun' value='&laquo;'/>
+					<input type='button'class="button" onClick='chgMth(1, 0);' title='-1 bulan' value='&laquo;'/>
+				</td>
+				<td colSpan='3' class='myh' id='mTyR'/>
+				<td colSpan='2' style='width: 130px;'>
+					<input type='button'class="button" onClick='chgMth(3, 0);' title='+1 bulan' value='&raquo;'/>
+					<input type='button'class="button" onClick='chgMth(4, 1);' title='+1 tahun' value='&raquo;'/>
+					<input type='button'class="button" onClick='chgMth(4, 10);' title='+10 tahun' value='&raquo;'/>
+					<input type='button'class="button" onClick='chgMth(4, 100);' title='+100 tahun' value='&raquo;'/>
+				</td>
+			</tr>
+			<tr>
+				<td class='mgh'>Minggu</td>
+				<td class='dyh'>Senin</td>
+				<td class='dyh'>Selasa</td>
+				<td class='dyh'>Rabu</td>
+				<td class='dyh'>Kamis</td>
+				<td class='jmh'>Jum'at</td>
+				<td class='sth'>Sabtu</td>
+			</tr>
+			<tr>
+				<td colSpan='1' class='mg' id='iD0'/>
+				<td colSpan='1' class='dy' id='iD1'/>
+				<td colSpan='1' class='dy' id='iD2'/>
+				<td colSpan='1' class='dy' id='iD3'/>
+				<td colSpan='1' class='dy' id='iD4'/>
+				<td colSpan='1' class='jm' id='iD5'/>
+				<td colSpan='1' class='st' id='iD6'/>
+			</tr>
+			<tr>
+				<td colSpan='1' class='mg' id='iD7'/>
+				<td colSpan='1' class='dy' id='iD8'/>
+				<td colSpan='1' class='dy' id='iD9'/>
+				<td colSpan='1' class='dy' id='iD10'/>
+				<td colSpan='1' class='dy' id='iD11'/>
+				<td colSpan='1' class='jm' id='iD12'/>
+				<td colSpan='1' class='st' id='iD13'/>
+			</tr>
+			<tr>
+				<td colSpan='1' class='mg' id='iD14'/>
+				<td colSpan='1' class='dy' id='iD15'/>
+				<td colSpan='1' class='dy' id='iD16'/>
+				<td colSpan='1' class='dy' id='iD17'/>
+				<td colSpan='1' class='dy' id='iD18'/>
+				<td colSpan='1' class='jm' id='iD19'/>
+				<td colSpan='1' class='st' id='iD20'/>
+			</tr>
+			<tr>
+				<td colSpan='1' class='mg' id='iD21'/>
+				<td colSpan='1' class='dy' id='iD22'/>
+				<td colSpan='1' class='dy' id='iD23'/>
+				<td colSpan='1' class='dy' id='iD24'/>
+				<td colSpan='1' class='dy' id='iD25'/>
+				<td colSpan='1' class='jm' id='iD26'/>
+				<td colSpan='1' class='st' id='iD27'/>
+			</tr>
+			<tr>
+				<td colSpan='1' class='mg' id='iD28'/>
+				<td colSpan='1' class='dy' id='iD29'/>
+				<td colSpan='1' class='dy' id='iD30'/>
+				<td colSpan='1' class='dy' id='iD31'/>
+				<td colSpan='1' class='dy' id='iD32'/>
+				<td colSpan='1' class='jm' id='iD33'/>
+				<td colSpan='1' class='st' id='iD34'/>
+			</tr>
+			<tr>
+				<td colSpan='1' rowSpan='2' class='mg' id='iD35'/>
+				<td colSpan='1' rowSpan='2' class='dy' id='iD36'/>
+				<td colSpan='3' rowSpan='2' class='clk' id='showClock'/>
+				<td colSpan='2' class='dte' id='showDate'/>
+			</tr>
+			<tr>
+				<td colSpan='2' class='dte' style='color: #00cf00;' id='showDay'/>
+			</tr>
+		</table>
+	</body>
+	<script type='text/javascript'>
+		dN = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu"];
+		mN = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "Nopember", "Desember"];
+		pN = ["Legi", "Pahing", "Pon", "Wage", "Kliwon"];
+
+		chgMth(2, 0);
+		chgClk();
+		document.body.focus();
+
+		iW = (464 + (464 - document.body.offsetWidth));
+		iH = (464 + (464 - document.body.offsetHeight));
+		window.resizeTo(iW, iH);
+		window.moveTo(((sW - iW) / 2), ((sH - iH) / 2));
+
+		function chgMth(i, y) {
+			dT = new Date();
+			if (i == 0) {
+				yR -= y;
+				if (yR < 100) {
+					yR = 100;
+				}
+			}
+			if (i == 1) {
+				if (mT > 0) {
+					mT--;
+				} else {
+					if (yR == 100) {
+						mT = 0;
+					} else {
+						mT = 11;
+						yR--;
+					}
+				}
+			}
+			if (i == 2) {
+				mT = dT.getMonth();
+				yR = dT.getFullYear();
+			}
+			if (i == 3) {
+				if (mT < 11) {
+					mT++;
+				} else {
+					if (yR == 250000) {
+						mT = 11;
+					} else {
+						mT = 0;
+						yR++;
+					}
+				}
+			}
+			if (i == 4) {
+				yR += y;
+				if (yR > 250000) {
+					yR = 250000;
+				}
+			}
+			for (cN = 0; cN <= 36; cN++) {
+				document.getElementById("iD" + cN).style.backgroundColor = "#fff";
+			}
+			cN = new Date(yR, mT, 1).getDay();
+			for (dY = new Date(yR, mT, 0).getDate() - (cN - 1), bI = 0; bI < cN; dY++, bI++) {
+				document.getElementById("iD" + bI).innerHTML = "<font style='font-size: 20px; color: #999;'>" + dY + "</font>";
+			}
+			for (dY = 1; dY <= new Date(yR, (mT + 1), 0).getDate(); dY++, cN++) {
+				pS = Math.floor(((new Date(yR, mT, dY).getTime() - new Date(100, 0, 1).getTime()) / (24 * 60 * 60 * 1000)) % 5);
+				document.getElementById("iD" + cN).innerHTML = "<font style='font-size: 28px;'>" + dY + "</font><br/>" + pN[pS];
+				if (dY == dT.getDate() & mT == dT.getMonth() & yR == dT.getFullYear()) {
+					document.getElementById("iD" + cN).style.backgroundColor = "#dcdcff";
+				}
+			}
+			for (dY = 1; cN <= 36; dY++, cN++) {
+				document.getElementById("iD" + cN).innerHTML = "<font style='font-size: 20px; color: #999;'>" + dY + "</font>";
+			}
+			mTyR.title = mN[dT.getMonth()] + " " + dT.getFullYear();
+			mTyR.innerHTML = "<font onClick='chgMth(2, 0);' style='cursor: pointer;'>" + mN[mT] + "&nbsp;" + yR + "</font>";
+		}
+
+		function chgClk() {
+			dTcL = new Date();
+			hRcL = dTcL.getHours();
+			mNcL = dTcL.getMinutes();
+			sCcL = dTcL.getSeconds();
+			dYcL = dTcL.getDate();
+			mTcL = dTcL.getMonth();
+			yRcL = dTcL.getFullYear();
+			if (mTcL == 7) {
+				mMcL = "Ags";
+			} else {
+				mMcL = mN[mTcL].substr(0, 3);
+			}
+			if (dYcL < 10) {
+				dYcL = "0" + dYcL;
+			}
+			if (hRcL < 10) {
+				hRcL = "0" + hRcL;
+			}
+			if (mNcL < 10) {
+				mNcL = "0" + mNcL;
+			}
+			if (sCcL < 10) {
+				sCcL = "0" + sCcL;
+			}
+			if (showDate.innerHTML != dYcL + "&nbsp;" + mMcL + "&nbsp;" + yRcL) {
+				chgMth(5, 0);
+			}
+			pScL = Math.floor(((new Date(yRcL, mTcL, dYcL).getTime() - new Date(100, 0, 1).getTime()) / (24 * 60 * 60 * 1000)) % 5);
+			showClock.innerHTML = hRcL + ":" + mNcL + ":" + sCcL;
+			showDate.innerHTML = dYcL + "&nbsp;" + mMcL + "&nbsp;" + yRcL;
+			showDay.innerHTML = dN[dTcL.getDay()] + "&nbsp;" + pN[pScL];
+			setTimeout("chgClk();", 100);
+		}
+	</script>
+</html>
