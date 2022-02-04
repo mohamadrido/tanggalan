@@ -1,0 +1,51 @@
+#calendar tr p.m-date {
+  font-size: 24px;
+  font-weight: 600;
+}
+#calendar tr td p {
+  margin: 0;
+}
+
+#calendar tr td {
+  text-align: center;
+}
+#calendar tr th {
+  background: #333;
+  color: white;
+  text-align: center;
+}
+#calendar tr p.h-date {
+  font-size: 20px;
+  color: #3d8ddd;
+}
+#calendar.calendar-java tr p.h-date {
+  font-size: 18px;
+}
+
+#calendar tr td.col-0 p {
+  color: #ee3322;
+}
+
+#calendar tr td.col-0 p {
+  color: #ee3322;
+}
+#calendar tr td.col-5 p {
+  color: #14a111;
+}
+h2.title-today, h2.title-hijr {
+  margin-bottom: 42px;
+  font-weight: 600;
+}
+h2.title-hijr {
+  margin: 24px 0 18px;
+  font-size: 24px;
+  color: #119911;
+  float: right;
+}
+.calendar-form #btn-result {
+  border-radius: 4px;
+  border: 0;
+}
+.calendar-form {
+  float: right;
+}
