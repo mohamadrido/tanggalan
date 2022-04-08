@@ -43,7 +43,7 @@ h2.title-hijr {
   float: right;
 }
 .calendar-form #btn-result {
-  border-radius: 4px;
+  /*border-radius: 4px;*/
   border: 0;
 }
 .calendar-form {
