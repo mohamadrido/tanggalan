@@ -505,7 +505,7 @@ var HijriJS = {
 		var title_today = document.querySelector("span.title-today");
 		var title_today = document.querySelector("title.title-today");
 		var java_today = HijriJS.gregorianToHijri(now.getFullYear(), (now.getMonth() + 1), now.getDate());
-		title_today.textContent = hari[now.getDay()]+', '+ now.getDate() +' '+bulan[month_now]+' '+year_now+' / '+java_today.day+' '+java_months[java_today.month-1]+' '+java_today.year;
+		title_today.textContent = hari[now.getDay()]+', '+java_today.day+' '+java_months[java_today.month-1]+' '+java_today.year' | Kalender Jawa Hari Ini 2022;
 
 		var title_hijr = document.querySelector("h2.title-hijr");
 		var first_h = HijriJS.gregorianToHijri(first_date.getFullYear(), (first_date.getMonth() + 1), first_date.getDate());
