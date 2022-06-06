@@ -83,7 +83,6 @@ button.menu-toggle{background-color:transparent;width:100%;border:0;text-align:c
 	<div class="inside-article">
 		
 		<div class="entry-content" itemprop="text">
-			<span id="digital-clock"></span>
 	<div class="calendar-form">
 		<select class="form-control months" id="select-month">
 			<option value="0"> Januari</option>
@@ -104,7 +103,7 @@ button.menu-toggle{background-color:transparent;width:100%;border:0;text-align:c
 	</div>
 	<div style="clear: both;"></div>
 	
-			<h2 class="title-hijr"></h2>
+			<h2 class="time-today" id="digital-clock"></h2><h2 class="title-hijr"></h2>
 	<div id="calendar" class="calendar-java">
 		<table class="table tbl-hijr">
 		  <tbody style="border-radius: 9px 9px 0px 0px">
@@ -749,7 +748,7 @@ span{
   font-size: 18px;
   font-weight: 600;
 }
-span.title-today, h2.title-hijr {
+span.title-today, h2.title-hijr, h2.time-today {
   margin-bottom: 42px;
 
 }
@@ -758,6 +757,12 @@ h2.title-hijr {
   font-size: 18px;
   color: #04aa6d;
   float: right;
+}
+h2.time-today {
+  margin: 24px 0 18px;
+  font-size: 18px;
+  color: #04aa6d;
+  float: left;
 }
 
 .calendar-form {
