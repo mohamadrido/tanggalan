@@ -814,11 +814,11 @@ function Time() {
       period = "Wengi";
   }
   // Converting the hour in 12-hour format
-  if (hour == 0) {
-      hour = 24;
+  if (hour == 24) {
+      hour = 12;
   } else {
-      if (hour > 12) {
-          hour = hour - 13;
+      if (hour > 24) {
+          hour = hour - 24;
       }
   }
 
