@@ -798,32 +798,18 @@ function Time() {
   var period = "";
 
   // Assigning Rina / Wengi according to current hour
-  if (hour >= 10) {
-      period = "Esuk";
+  if (hour >= 12) {
+      period = "PM";
   } else {
-      period = "Awan";
+      period = "AM";
   }
-  if (hour >= 15) {
-      period = "Awan";
-  } else {
-      period = "Sore";
-  }
-  if (hour >= 18) {
-      period = "Sore";
-  } else {
-      period = "Wengi";
-  }
-  if (hour >= 0) {
-      period = "Esuk";
-  } else {
-      period = "Wengi";
-  }
+
   // Converting the hour in 12-hour format
   if (hour == 0) {
-      hour = 24;
+      hour = 12;
   } else {
       if (hour > 12) {
-          hour = hour - 13;
+          hour = hour - 12;
       }
   }
 
