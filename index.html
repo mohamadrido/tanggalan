@@ -103,7 +103,7 @@ button.menu-toggle{background-color:transparent;width:100%;border:0;text-align:c
 	</div>
 	<div style="clear: both;"></div>
 	<div style="background:linear-gradient(to right,#008bff 0%,#00ffb8 100%,orange 500%);box-shadow:0 2px 3px rgba(0,0,0,0.06);border-radius:9px;text-decoration:none;display:block;"></div>
-			<h2 class="time-today" id="digital-clock"></h2><h2 class="title-hijr"></h2>
+			<h2  class="head-today"></h2><h2 class="pd">&ensp;</h2><h2 class="time-today" id="digital-clock"></h2><h2 class="title-hijr"></h2>
 	</div>
 	<div id="calendar" class="calendar-java">
 		<table class="table tbl-hijr">
@@ -502,6 +502,10 @@ var HijriJS = {
 		var first_date = new Date(year_now, month_now, 1);
 		var last_date = new Date(year_now, month_now + 1, 0);
 
+		var head_today = document.querySelector("h2.head-today");
+		var java_today = HijriJS.gregorianToHijri(now.getFullYear(), (now.getMonth() + 1), now.getDate());
+		head_today.textContent = hari[now.getDay()]+', '+java_today.day+' '+java_months[java_today.month-1]+' '+java_today.year;
+
 		var title_today = document.querySelector("span.title-today");
 		var title_today = document.querySelector("title.title-today");
 		var java_today = HijriJS.gregorianToHijri(now.getFullYear(), (now.getMonth() + 1), now.getDate());
@@ -754,13 +758,13 @@ span.title-today, h2.title-hijr, h2.time-today {
 
 }
 h2.title-hijr {
-  margin: 24px 0 18px;
+  margin: 10px 0 5px;
   font-size: 16px;
   color: #04aa6d;
   float: right;
 }
-h2.time-today {
-  margin: 24px 0 18px;
+h2.time-today, h2.head-today, h2.pd {
+  margin: 10px 0 5px;
   font-size: 16px;
   color: #04aa6d;
   float: left;
