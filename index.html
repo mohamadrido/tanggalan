@@ -20,10 +20,11 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 #calendar{
-	min-width: 420px;
+	min-width: 180px;
 }
 .wk{
     margin: 0;
+    writing-mode: vertical-rl;
 }
 .card-head h2{
 	color: white;
@@ -127,6 +128,10 @@ table.cal_table > tbody > tr > td:hover {
 }
 th.day{
 	color: #2196f3;
+}
+th.daywk{
+	color: #444;
+    margin: 0;
 }
 div.card-head{
 	border-radius: 2px 2px 0px 0px;
@@ -346,7 +351,7 @@ $('#year').text(g_year);
 <th class="day">Kemis</th>
 <th class="day" style="color: #4caf50;">Jumuah</th>
 <th class="day">Setu</th>
-<th class="day">Wuku</th>
+<th class="daywk">Wuku</th>
 </tr>
 <tr class="row-0">
 <td onclick="detail(this)" class="col-0"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
