@@ -6,30 +6,30 @@
 <script type="text/javascript" src="https://kalenderjawa.site/assets/hari_libur.js"></script>
 <script type="text/javascript" src="https://kalenderjawa.site/assets/HijriJs.js"></script>
 <style>
-html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 body {
-  background:#fff;
-  padding: 0;
-  margin: 0;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 #calendar{
-	min-width: 120px;
+	min-width: 150px;
 }
-h2.time-today { margin: 24px 0 18px; font-size: 16px; float: right;padding-right:10px;}
-h2.time-note { margin: 24px 0 18px; font-size: 16px; float: right;}
 .wk{
     margin: 0;
     writing-mode: vertical-rl;
-    padding-left: 20%;
 }
-.card-head h2{color: white; font-weight: normal; font-size: 110%; margin: 0;text-align:left;padding-left:10px;}
+.card-head h2{
+	color: white;
+    font-weight: normal;
+    font-size: 120%;
+    margin: 0;
+}
 #see_more{
-	margin: 0;
+	margin: -10px 0px 0px 0px;
     text-align: center;
 	text-decoration: underline;
 	cursor:pointer;
-    color: #666;
+	padding-top: 20px;
+    color: #555;
 }
 .card-content{
 	margin: 10px 0px 0px 0px;
@@ -44,6 +44,7 @@ h2.time-note { margin: 24px 0 18px; font-size: 16px; float: right;}
     -moz-box-shadow: none;
     box-shadow: none;
     margin-bottom: 15px;
+    border: solid 1px #e9e9e9;
 }
 .col-s3{
 	display: inline-block;
@@ -66,18 +67,21 @@ h2.time-note { margin: 24px 0 18px; font-size: 16px; float: right;}
 .btn-arr{
 	background-color: transparent;
     border: none;
-    color: #fefefe;
+    color: white;
+    padding: 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 120%;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 50%;
+    width: 40px;
 	cursor:pointer;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
 }
 .btn-arr:hover{
 	background-color: transparent;
-    color: #fff;
 }
 .material-icons{
     position: absolute;
@@ -99,18 +103,6 @@ table.cal_table{
 	border-collapse: collapse;
 	width:100%;
 }
-table th {
- border-width:1px;
- border-style:solid;
- border-color:#e6e6e6;
- background-color:#f0f0f0;
-}
-table td{
- border-width:1px;
- border-style:solid;
- border-color:#e6e6e6;
- background-color:#fff;
-}
 table td:hover{
     background-color: #ddd !important;;
     cursor:pointer;
@@ -126,10 +118,6 @@ table.cal_table > tbody > tr > td:hover {
 th.day{
 	color: #2196f3;
 }
-th.daywk{
-	color: #444;
-    margin: 0;
-}
 div.card-head{
     text-align: center;
     padding: 15px 0px; 
@@ -138,6 +126,7 @@ div.card-head{
     margin-top: -10px;
     margin-left: -10px;
     margin-right: -10px;
+
 }
 div.card-head .card-title{
 	font-size:20px;
@@ -161,10 +150,9 @@ p.m-date{
 }
 #setbulan{
 	text-align: center;
-    font-size: 100%;
-    padding: 10px;
-    color: #666;
-    margin-left: 0;
+    font-size: 90%;
+    padding: 15px 0px;
+    background-color: #fff;
 }
 
 .list{
@@ -191,10 +179,10 @@ p.m-date{
     margin-top:10px !important;
 }
 #go_year{
+    height: 100%;
     width: 100%;
     padding: 10px;
-    font-size:100%;
-    background-color: orange !important;
+    background-color: #4d626e !important;
     border: none;
     color: white !important;
 }
@@ -217,6 +205,7 @@ p.m-date{
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
+  border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
 }
 
@@ -244,17 +233,16 @@ blockquote:before{
     top: -12px !important;
 }
 #holiday{
-    font-size: 120%;
-    text-align:left;
+    font-size: 100%;
 }
-@media screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
     table.cal_table {
         font-size:80%;
     }   
 }
-@media screen and (max-width: 350px) {
+@media only screen and (max-width: 400px) {
     table.cal_table {
-        font-size:60%;
+        font-size:70%;
     }  
     table td{
         padding: 8px 0px;
@@ -272,7 +260,7 @@ blockquote:before{
 <!-- Status start -->
 <div class="card-head">
 <h2 class="time-today" id="digital-clock"></h2><h2 class="time-note">Jam</h2>
-<h2 id="hari_ini">Tanggalan Jawa Hari Ini</h2>
+<h2 id="hari_ini">Tanggalan Jawa</h2>
 </div>
 <div class="card-content" style="background: #fff;">
 <table class="cal_table" border="1">
