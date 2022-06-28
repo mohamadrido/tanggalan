@@ -1,26 +1,35 @@
+<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Kalender Jawa</title>
+<meta itemprop="description" name="description" content="Kalender Jawa Hari ini 2022 Online - Neptu Dina Pasaran, Sasi lan Tahun" />
+<meta property="og:locale" content="id">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kalender Jawa">
+<meta property="og:url" content="https://kalenderjawa.site/">
+<meta property="og:site_name" content="Kalender Jawa">
+<meta property="og:description" content="Kalender Jawa Hari ini 2022 Online - Neptu Dina Pasaran, Sasi lan Tahun">
+<meta content="Kalender Jawa" name="Author">
 <script type="text/javascript" src="https://kalenderjawa.site/assets/jquery-v2.0.2.min.js"></script>
 <script type="text/javascript" src="https://kalenderjawa.site/assets/hari_libur.js"></script>
 <script type="text/javascript" src="https://kalenderjawa.site/assets/HijriJs.js"></script>
 <style>
 body {
-  background:#fff;
-  padding: 0;
-  margin: 0;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 #calendar{
 	min-width: 150px;
 }
-h2.time-today { margin: 24px 0 18px; font-size: 16px; float: right;padding-right:10px;}
-h2.time-note { margin: 24px 0 18px; font-size: 16px; float: right;}
+img {width: 100%;}
+img.time-note {float: right;padding-right:10px;}
 .wk{
     margin: 0;
     writing-mode: vertical-rl;
-    padding-left: 20%;
+    padding-left: 15%;
 }
 .card-head h2{
 	color: white;
@@ -44,12 +53,10 @@ h2.time-note { margin: 24px 0 18px; font-size: 16px; float: right;}
     margin-right: -20px;
 }
 .card{
-    padding: 10px;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
     margin-bottom: 15px;
-    border: solid 1px #e9e9e9;
 }
 .col-s3{
 	display: inline-block;
@@ -70,18 +77,15 @@ h2.time-note { margin: 24px 0 18px; font-size: 16px; float: right;}
     width: 23%;
 }
 .btn-arr{
-	background-color: transparent;
+    background-color: transparent;
     border: none;
     color: white;
-    padding: 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    border-radius: 50%;
+    font-size: 100%;
     width: 40px;
-	cursor:pointer;
+    cursor:pointer;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
 }
@@ -98,7 +102,7 @@ h2.time-note { margin: 24px 0 18px; font-size: 16px; float: right;}
     text-align: left;
     font-size: 90%;
     padding: 15px 0px;
-    background-color: teal;
+    background: linear-gradient(200deg,#24bb81 0,teal 56%,teal 130%);
     margin-left: -10px;
     margin-right: -10px;
     margin-top: 10px;
@@ -108,10 +112,23 @@ table.cal_table{
 	border-collapse: collapse;
 	width:100%;
 }
+table th {
+ border-width:1px;
+ border-style:solid;
+ border-color:#e6e6e6;
+ background-color:#f0f0f0;
+}
+table td{
+ border-width:1px;
+ border-style:solid;
+ border-color:#e6e6e6;
+ background-color:#fff;
+}
 table td:hover{
-    background-color: #ddd !important;;
+    background: #ddd !important;
     cursor:pointer;
 }
+td.time-today {color:#37474f;}
 table, th, td {
 	text-align:center !important;
 	color: #37474f;
@@ -124,10 +141,10 @@ th.day{
 	color: #2196f3;
 }
 div.card-head{
-    text-align: center;
+    text-align: left;
     padding: 15px 0px; 
     color: white;
-	background-color: teal;
+    background: linear-gradient(200deg,#24bb81 0,teal 56%,teal 130%);
     margin-top: -10px;
     margin-left: -10px;
     margin-right: -10px;
@@ -157,7 +174,7 @@ p.m-date{
 	text-align: center;
     font-size: 90%;
     padding: 15px 0px;
-    background-color: #fff;
+    background #fff;
 }
 
 .list{
@@ -238,7 +255,7 @@ blockquote:before{
     top: -12px !important;
 }
 #holiday{
-    font-size: 100%;
+    font-size: 110%;
 }
 @media only screen and (max-width: 600px) {
     table.cal_table {
@@ -259,17 +276,23 @@ blockquote:before{
 }
 
 </style>
+
 </head>
 <body>
+
 <div class="card">
-<!-- Status start -->
 <div class="card-head">
-<h2 class="time-today" id="digital-clock"></h2><h2 class="time-note">Jam</h2>
-<h2 id="hari_ini">Tanggalan Jawa</h2>
+<img class="time-note" src="https://kalenderjawa.site/assets/img/ic_app.png" style="width: 31px;height:24px;"/>
+<h2 id="hari_ini" style="padding-left:10px;">Kalender Jawa Hari Ini</h2>
+<p style="margin:0px"></p>
 </div>
-<div class="card-content" style="background: #fff;">
+<div class="card-content">
 <table class="cal_table" border="1">
 <tbody>
+<tr>
+<td>Jam</td>
+<td class="time-today" id="digital-clock"></td>
+</tr>
 <tr>
 <td>Pasaran</td>
 <td class="to_pasaran"></td>
@@ -295,8 +318,8 @@ blockquote:before{
 <p id="see_more"><svg height="24" viewBox="0 -12 48 48" width="24"><path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" fill="deepskyblue"></path></svg></p>
 </div>
 </div>
-<!-- Status end -->
 <div id="kj">
+
 <script>
 var bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
 var d 		= new Date();
@@ -305,11 +328,12 @@ var g_year 	= d.getFullYear();
 $('#month').text(bulan[g_month]);
 $('#year').text(g_year);
 </script>
+
 <div class="card">
 <div class="card-head" style="text-align:center;">
 <div class="no-margin">
 <div class="col-s3">
-<button onclick="prev_year()" class="btn-arr" style="color:orange;">&lsaquo;&lsaquo;</button>
+<button onclick="prev_year()" class="btn-arr">&lsaquo;&lsaquo;</button>
 <button onclick="prev()" class="btn-arr">&lsaquo;</button>
 </div>
 <div class="col-s6">
@@ -317,15 +341,15 @@ $('#year').text(g_year);
 </div>
 <div class="col-s3">
 <button onclick="next()" class="btn-arr">&rsaquo;</button>
-<button onclick="next_year()" class="btn-arr" style="color:orange;">&rsaquo;&rsaquo;</button>
+<button onclick="next_year()" class="btn-arr">&rsaquo;&rsaquo;</button>
 </div>
 </div>
 </div>
 <div id="calendar" class="calendar-java">
 <div id='setbulan'></div>
-<table class="cal_table tbl-hijr" style="background: #fff;" border="1">
+<table class="cal_table tbl-hijr" border='1'>
 <tbody>
-<tr class="row-days" style="background: #f0f0f0;">
+<tr class="row-days">
 <th class="day" style="color: #f44336;">Akad</th>
 <th class="day">Senen</th>
 <th class="day">Selasa</th>
@@ -407,11 +431,13 @@ $('#year').text(g_year);
 </ul>
 </div>
 </div>
+				
 </div>
 </div>
+
 <div class="card">
 <div class="card-head">
-<h2>Loncat ke</h2>
+<h2 style="padding-left:10px;">Loncat ke</h2>
 </div>
 <div style="margin-top:5px;">
 <div class="col-s6">
