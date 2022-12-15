@@ -1,0 +1,341 @@
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="CodeHim">
+<title>Dark Mode Toggle with Local Storage Example</title>
+<style>
+
+h1 {
+  color: skyblue;
+  text-align: center;
+}
+/* if dark-mode class is not added set this background */
+body {
+  background: white;
+  transition: 0.5s;
+}
+.container{
+    text-align: center;
+    padding: 70px;
+}
+#ChangeTheme {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+label{
+  display: block;
+  height: 15px;
+  width: 60px;
+  position: relative;
+  margin: 0px auto;
+}
+span.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #dadada;
+  border-radius: 30px;
+}
+span.slide:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  background: #fff;
+  border-radius: 50%;
+  top: -2px;
+  left: 0px;
+  transition: 0.5s;
+  box-shadow: rgba(0, 0, 0, 0.21) 0px 0px 7px 1px;
+}
+.txt {
+  position: relative;
+}
+.txt p:nth-child(1) {
+  color: grey;
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: 0.5s;
+}
+#ChangeTheme:checked + span.slide:before {
+  transform: translatex(40px);
+}
+/* if dark-mode class is added set this background */
+body.dark-mode {
+  background: #353535;
+}
+.dark-mode .txt p:nth-child(1) {
+  color: #000;
+  font-weight: normal;
+}
+.dark-mode .txt p:nth-child(2) {
+  color: grey;
+  font-weight: bold;
+}
+
+body.dark-mode header,
+body.dark-mode main,
+body.dark-mode footer{
+    background: #616161 !important;
+    
+}
+body.dark-mode a.btn{
+    background: #333 !important;
+    color: #999 !important;
+}
+body.dark-mode p{
+    color: gray !important;
+}
+
+</style>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+*{ margin: 0; padding: 0;}
+body{
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-smoothing: antialiased;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+  font-size: 15px;
+  background: #eee;
+}
+.intro{
+   background: #fff;
+   padding: 60px 30px;
+   color: #333;
+   margin-bottom: 15px;
+   line-height: 1.5;
+   text-align: center;
+}
+.intro h1 {
+   font-size: 18pt;
+   padding-bottom: 15px;
+
+}
+.intro p{
+   font-size: 14px;
+}
+
+.action{
+   text-align: center;
+   display: block;
+   margin-top: 20px;
+}
+
+a.btn {
+  text-decoration: none;
+  color: #666;
+   border: 2px solid #666;
+   padding: 10px 15px;
+   display: inline-block;
+   margin-left: 5px;
+}
+a.btn:hover{
+   background: #666;
+   color: #fff;
+    transition: .3s;
+-webkit-transition: .3s;
+}
+.btn:before{
+  font-family: FontAwesome;
+  font-weight: normal;
+  margin-right: 10px;
+}
+.github:before{content: "\f09b"}
+.down:before{content: "\f019"}
+.back:before{content:"\f112"}
+.credit{
+    background: #fff;
+    padding: 12px;
+    font-size: 9pt;
+    text-align: center;
+    color: #333;
+    margin-top: 40px;
+
+}
+.credit span:before{
+   font-family: FontAwesome;
+   color: #e41b17;
+   content: "\f004";
+
+
+}
+.credit a{
+   color: #333;
+   text-decoration: none;
+}
+.credit a:hover{
+   color: #1DBF73; 
+}
+.credit a:hover:after{
+    font-family: FontAwesome;
+    content: "\f08e";
+    font-size: 9pt;
+    position: absolute;
+    margin: 3px;
+}
+main{
+  background: #fff;
+  padding:: 20px;
+  
+}
+
+article li{
+   color: #444;
+   font-size: 15px;
+   margin-left: 33px;
+   line-height: 1.5;
+   padding: 5px;
+}
+article h1,
+article h2,
+article h3,
+article h4,
+article p{
+   padding: 14px;
+   color: #333;
+}
+article p{
+   font-size: 15px;
+    line-height: 1.5;
+}
+ 
+@media only screen and (min-width: 720px){
+    main{
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto; 
+      padding: 24px;
+    }
+
+
+}
+
+.set-overlayer,
+.set-glass,
+.set-sticky {
+	cursor: pointer;
+	height: 45px;
+	line-height: 45px;
+	padding: 0 15px;
+	color: #333;
+	font-size: 16px;
+}
+.set-overlayer:after,
+.set-glass:after,
+.to-active:after,
+.set-sticky:after {
+	font-family: FontAwesome;
+	font-size: 18pt;
+	position: relative;
+	float: right;
+}
+.set-overlayer:after,
+.set-glass:after,
+.set-sticky:after {
+	content: "\f204";
+	transition: .6s;
+}
+
+.to-active:after {
+	content: "\f205";
+	color: #008080;
+	transition: .6s;
+}
+.set-overlayer,
+.set-glass,
+.set-sticky,
+.source,
+.theme-tray {
+	margin: 10px;
+	background: #f2f2f2;
+	border-radius: 5px;
+	border: 2px solid #f1f1f1;
+	box-sizing: border-box;
+}
+/* Syntax Highlighter*/
+
+pre.prettyprint {
+	padding: 15px !important;
+   margin: 10px;
+	border: 0 !important;
+  background: #f2f2f2;
+  overflow: auto;
+}
+
+.source {
+	white-space: pre;
+	overflow: auto;
+	max-height: 400px;
+}
+code{
+    border:1px solid #ddd;
+    padding: 2px;
+    border-radius: 2px;
+}
+
+</style>
+</head>
+<body class="dark-mode">
+<header class="intro">
+<h1>Dark Mode Toggle with Local Storage Example</h1>
+<p>Pure Javascript Dark mode checkbox.</p>
+<div class="action">
+<a href="https://www.codehim.com/vanilla-javascript/javascript-dark-mode-toggle-with-local-storage/" title="Back to download and tutorial page" class="btn back">Back to Tutorial</a>
+</div>
+</header>
+<main>
+
+<h1>Dark mode on full domain with sessionStorage</h1>
+
+<div class="container">
+<p style="margin-left: 50px; margin-bottom: 20px"> Dark Mode</p>
+<label for="ChangeTheme">
+<input type="checkbox" id="ChangeTheme"> <span class="slide"></span>
+</label>
+</div>
+
+</main>
+<footer class="credit">Author: MD Riaz - Distributed By: <a title="Awesome web design code &amp; scripts" href="https://www.codehim.com?source=demo-page" target="_blank">CodeHim</a></footer>
+
+<script ype="text/javascript">
+var checkbox = document.getElementById("ChangeTheme"); //get the checkbox to a variable
+
+//check storage if dark mode was on or off
+if (sessionStorage.getItem("mode") == "dark") {
+  darkmode(); //if dark mode was on, run this funtion
+} else {
+  nodark(); //else run this funtion
+}
+
+//if the checkbox state is changed, run a funtion
+checkbox.addEventListener("change", function() {
+  //check if the checkbox is checked or not
+  if (checkbox.checked) {
+    darkmode(); //if the checkbox is checked, run this funtion
+  } else {
+    nodark(); //else run this funtion
+  }
+});
+
+//function for checkbox when checkbox is checked
+function darkmode() {
+  document.body.classList.add("dark-mode"); //add a class to the body tag
+  checkbox.checked = true; //set checkbox to be checked state
+  sessionStorage.setItem("mode", "dark"); //store a name & value to know that dark mode is on
+}
+
+//function for checkbox when checkbox is not checked
+function nodark() {
+  document.body.classList.remove("dark-mode"); //remove added class from body tag
+  checkbox.checked = false; //set checkbox to be unchecked state
+  sessionStorage.setItem("mode", "light"); //store a name & value to know that dark mode is off or light mode is on
+}
+</script>
+
+</body></html>
