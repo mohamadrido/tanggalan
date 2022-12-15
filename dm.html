@@ -1,0 +1,121 @@
+<html lang="en"><head>
+
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  
+<link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+<meta name="apple-mobile-web-app-title" content="CodePen">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+
+<link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+
+
+  <title>CodePen - dark mode toggle</title>
+  
+  
+  
+  
+<style>
+body {
+  font-family: sans-serif;
+  margin: 0;
+}
+
+#toggle-btn {
+  padding: 0.5em;
+  font-weight: 800;
+}
+
+#toggle-btn:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.dark-mode-toggle {
+  background: #333;
+  color: #fff;
+}
+
+#theme {
+  width: 100vw;
+  height: 100vh;
+}
+
+.dark-mode-theme {
+  background: #333;
+  color: #fff;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no">
+  <div id="theme" class="">
+  <button id="toggle-btn" class="dark-mode-toggle">Toggle dark mode</button>
+  <h1>Theme!</h1>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+    mollitia, molestiae quas vel sint commodi repudiandae consequuntur
+    voluptatum laborum numquam blanditiis harum quisquam eius sed odit
+    fugiat iusto fuga praesentium optio, eaque rerum! Provident similique
+    accusantium nemo autem. Veritatis obcaecati tenetur iure eius earum ut
+    molestias architecto voluptate aliquam nihil, eveniet aliquid culpa
+    officia aut! Impedit sit sunt quaerat, odit, tenetur error, harum
+    nesciunt ipsum debitis quas aliquid. Reprehenderit, quia.
+  </p>
+</div>
+
+  
+      <script id="rendered-js">
+const toggleBtn = document.getElementById("toggle-btn");
+const theme = document.getElementById("theme");
+let darkMode = localStorage.getItem("dark-mode");
+
+const enableDarkMode = () => {
+  theme.classList.add("dark-mode-theme");
+  toggleBtn.classList.remove("dark-mode-toggle");
+  localStorage.setItem("dark-mode", "enabled");
+};
+
+const disableDarkMode = () => {
+  theme.classList.remove("dark-mode-theme");
+  toggleBtn.classList.add("dark-mode-toggle");
+  localStorage.setItem("dark-mode", "disabled");
+};
+
+if (darkMode === "enabled") {
+  enableDarkMode(); // set state of darkMode on page load
+}
+
+toggleBtn.addEventListener("click", e => {
+  darkMode = localStorage.getItem("dark-mode"); // update darkMode when clicked
+  if (darkMode === "disabled") {
+    enableDarkMode();
+  } else {
+    disableDarkMode();
+  }
+});
+//# sourceURL=pen.js
+    </script>
+
+  
+
+
+
+
+ 
+</body></html>
