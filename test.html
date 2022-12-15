@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Theme Toggler CSS</title>
+<style>
+html[data-theme='light']{  
+  --bg: #fff;
+  --bg-panel: #ebebeb;
+  --switch-color: rgb(27, 168, 14);
+  --color-heading: rgb(27, 168, 14);
+  --color-text: #333333;
+}
+
+html[data-theme='dark'] {
+  --bg: #333333;
+  --bg-panel: #434343;
+  --switch-color: #0077ff;
+  --color-heading: #0077ff;
+  --color-text: #B5B5B5;
+}
+
+body {
+  background-color: var(--bg);
+  height: 100%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+}
+
+.container {
+  background-color: var(--bg-panel);
+  margin: 5em;
+  padding: 5em;
+  border-radius: 15px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 80% auto;
+      grid-template-columns: 80% auto;
+  -ms-grid-rows: auto auto;
+      grid-template-rows: auto auto;
+      grid-template-areas: "title switch"
+ "content content";
+}
+
+.container h1 {
+  margin: 0;
+  color: var(--color-heading);
+}
+
+.container p {
+  color: var(--color-text);
+  /* -ms-grid-row: 2;
+  -ms-grid-column: 1; */
+  -ms-grid-column-span: 2;
+  grid-area: content;
+  font-size: 1.1em;
+  line-height: 1.8em;
+  margin-top: 2em;
+}
+
+.container p a {
+  color: var(--color-heading);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+input[type=checkbox] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 52px;
+  height: 27px;
+  background: var(--switch-color);
+  float: right;
+  border-radius: 100px;
+  position: relative;
+}
+
+label:after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 90px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+input:checked + label {
+  background: var(--switch-color);
+}
+
+input:checked + label:after {
+  left: calc(100% - 5px);
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+
+label:active:after {
+  width: 45px;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Engineering Education</h1>
+        <div class="toggle-container">
+            <input type="checkbox" id="switch"/><label for="switch">Toggle</label>
+        </div>
+        <p>Section partners with university students in Computer 
+        Science related fields of study to research and write about topics that are relevant to 
+        engineers in the modern technology landscape. You can find more information and program 
+        guidelines in the GitHub repository. If you're currently enrolled in a Computer Science 
+        related field of study and are interested in participating in the program,
+        please complete the registration form by clciking this link,
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfTbj3kqvEJEb5RLjqJurfbHa8ckzQx0CjRzaizblue9ZOK5A/viewform">Join Section</a>
+        or check out section on Github <a href="https://docs.google.com">Section</a>
+    </p>
+        
+       
+    </div>
+    <script>
+let theme = localStorage.getItem('data-theme');
+const checkbox = document.getElementById("switch");
+const changeThemeToDark = () =>{
+    document.documentElement.setAttribute("data-theme", "dark")
+    localStorage.setItem("data-theme", "dark")
+    console.log("I give you dark")
+}
+
+const changeThemeToLight = () =>{
+    document.documentElement.setAttribute("data-theme", "light")
+    localStorage.setItem("data-theme", 'light')
+    console.log("I give you light")
+}
+
+if(theme === 'dark'){
+    changeThemeToDark()
+}
+
+checkbox.addEventListener('change', ()=> {
+    let theme = localStorage.getItem('data-theme');
+    if (theme ==='dark'){
+        changeThemeToLight()
+    }else{
+        changeThemeToDark()
+    }
+   
+});
+    </script>
+</body>
