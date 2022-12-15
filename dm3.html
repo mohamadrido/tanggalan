@@ -1,0 +1,186 @@
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Theme Color Switch Example</title>
+<link href="https://www.cssscript.com/wp-includes/css/sticky.css" rel="stylesheet" type="text/css">
+<style>
+body {
+  margin: 0;
+  font-family: sans-serif;
+  color: #333;
+  font-size: 1.2em;
+  line-height: 1.6;
+}
+
+a {
+  color: #0cb45a;
+}
+
+.links {
+  margin: 30px 0 60px;
+}
+
+.links a {
+  display: inline-block;
+  margin: 0 20px 10px 0;
+}
+
+code {
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.1);
+  white-space: normal;
+  opacity: 0.75;
+}
+
+pre {
+  display: block;
+  white-space: normal;
+}
+
+pre code {
+  padding: 15px;
+  border-radius: 5px;
+  display: block;
+  font-size: 0.875em;
+}
+
+ol {
+  padding: 0 0 0 20px;
+}
+
+ol li:not(:last-child) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 2.488em;
+}
+
+h2 {
+  font-size: 2.074em;
+}
+
+h3 {
+  font-size: 1.728em;
+}
+
+h1,
+h2,
+h3 {
+  margin: 3rem 0 1rem;
+  line-height: 1.2;
+}
+
+p,
+pre {
+  margin: 0 0 1rem;
+}
+
+.demo-wrapper {
+  min-height: 100vh;
+  -webkit-transition: background 0.3s ease, color 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.demo-container {
+  padding: 80px 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+/*# sourceMappingURL=demo-styles.css.map */
+
+</style>
+<style>
+.alt-theme-color {
+  color: #fff;
+  background: #333;
+}
+
+.theme-color-switch {
+  display: inline-block;
+  padding: .5rem 1.5rem;
+  border: 2px solid rgb(12, 180, 90);
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1.25em;
+  color: #fff ;
+  background: rgb(12, 180, 90);
+  transition: all .3s ease;
+}
+
+.theme-color-switch:after {
+  content: attr(data-text-off);
+}
+
+.switch-on {
+  background-color: transparent;
+  color:  rgb(12, 180, 90);
+}
+
+.switch-on:after {
+  content: attr(data-text-on);
+}
+
+</style>
+  </head>
+  <body>
+    <div class="demo-wrapper alt-theme-color">
+      <div class="demo-container">
+        <h1>Dark Theme Color Switch Example</h1>
+        <div><div id="carbon-block"></div>
+
+</div>
+        <p style="margin:2rem auto">
+          Theme Color Switch is a quick implementation of the popular Dark Mode on your web app.
+        </p>
+
+        <div class="theme-color-switch switch-on" data-text-on="Switch To Light Mode" data-text-off="Switch To Dark Mode"></div>
+
+      </div>
+    </div>
+    <!-- demo-wrapper -->
+  
+  <script>
+  class ThemeColorSwitch {
+  constructor(page) {
+    this.toggle = document.querySelector('.theme-color-switch');
+    this.page = document.querySelector(page);
+    this.localStorageKey = 'altThemeColor';
+    this.localStorageValue = 'on';
+
+    if (localStorage.altThemeColor === this.localStorageValue) {
+      this.appAction();
+    }
+
+    this.toggle.addEventListener('click', this.appLogic.bind(this));
+  }
+
+  appLogic() {
+    if (localStorage.altThemeColor === this.localStorageValue) {
+      localStorage.removeItem(this.localStorageKey);
+      this.appAction();
+    } else {
+      localStorage.setItem(this.localStorageKey, this.localStorageValue);
+      this.appAction();
+    }
+  }
+
+  appAction() {
+    this.toggle.classList.toggle('switch-on');
+    this.page.classList.toggle('alt-theme-color');
+  }
+}
+
+  </script>
+  <script>
+    new ThemeColorSwitch('.demo-wrapper');
+  </script>
+</body></html>
