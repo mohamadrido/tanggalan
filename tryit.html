@@ -29,6 +29,19 @@
         button, input[type="file"] {
             margin-right: 5px;
         }
+        .device-buttons {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -41,6 +54,17 @@
         <input type="file" id="fileInput" accept=".txt,.js,.html,.css" onchange="loadFile()">
     </div>
     <iframe id="result"></iframe>
+    <div class="device-buttons">
+        <button onclick="setFrameSize('360px', '640px')">Android</button>
+        <button onclick="setFrameSize('375px', '667px')">iPhone</button>
+        <button onclick="setFrameSize('768px', '1024px')">iPad</button>
+        <button onclick="setFrameSize('1366px', '768px')">Laptop</button>
+        <button onclick="setFrameSize('1920px', '1080px')">Desktop</button>
+    </div>
+    <div class="footer">
+        <p>ChatGPT Version: GPT-4</p>
+        <p>Source Code: <a href="https://github.com/your-repo/your-project" target="_blank">GitHub Repository</a></p>
+    </div>
     <script>
         function runCode() {
             const codeInput = document.getElementById('code').value;
@@ -94,6 +118,12 @@
                 document.getElementById('code').value = decodeURIComponent(code);
                 runCode();
             }
+        }
+
+        function setFrameSize(width, height) {
+            const iframe = document.getElementById('result');
+            iframe.style.width = width;
+            iframe.style.height = height;
         }
 
         window.onload = loadCodeFromUrl;
