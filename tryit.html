@@ -44,7 +44,30 @@
         function runCode() {
             const codeInput = document.getElementById('code').value;
             const resultFrame = document.getElementById('result');
-            resultFrame.srcdoc = codeInput;
+            const fullCode = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                        }
+                    </style>
+                    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+                    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+                    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+                    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+                </head>
+                <body>
+                    <div id="app"></div>
+                    <div id="root"></div>
+                    <script type="text/babel">
+                        ${codeInput}
+                    </script>
+                </body>
+                </html>
+            `;
+            resultFrame.srcdoc = fullCode;
         }
 
         function saveFile() {
