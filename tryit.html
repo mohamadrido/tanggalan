@@ -26,7 +26,7 @@
         .buttons {
             margin-bottom: 10px;
         }
-        button {
+        button, input[type="file"] {
             margin-right: 5px;
         }
     </style>
@@ -37,37 +37,14 @@
     <div class="buttons">
         <button onclick="runCode()">Run</button>
         <button onclick="saveFile()">Save</button>
-        <button onclick="shareUrl()">Share URL</button>
+        <input type="file" id="fileInput" accept=".txt,.js,.html,.css" onchange="loadFile()">
     </div>
     <iframe id="result"></iframe>
     <script>
         function runCode() {
             const codeInput = document.getElementById('code').value;
             const resultFrame = document.getElementById('result');
-            const fullCode = `
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <style>
-                        body {
-                            font-family: Arial, sans-serif;
-                        }
-                    </style>
-                    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-                    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
-                    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-                    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-                </head>
-                <body>
-                    <div id="app"></div>
-                    <div id="root"></div>
-                    <script type="text/babel">
-                        ${codeInput}
-                    </script>
-                </body>
-                </html>
-            `;
-            resultFrame.srcdoc = fullCode;
+            resultFrame.srcdoc = codeInput;
         }
 
         function saveFile() {
@@ -79,15 +56,16 @@
             a.click();
         }
 
-        function shareUrl() {
-            const code = document.getElementById('code').value;
-            const encodedCode = encodeURIComponent(code);
-            const url = `${window.location.origin}${window.location.pathname}?code=${encodedCode}`;
-            navigator.clipboard.writeText(url).then(() => {
-                alert('URL copied to clipboard!');
-            }).catch(err => {
-                console.error('Failed to copy URL: ', err);
-            });
+        function loadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    document.getElementById('code').value = event.target.result;
+                };
+                reader.readAsText(file);
+            }
         }
 
         function loadCodeFromUrl() {
