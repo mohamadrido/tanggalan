@@ -23,20 +23,60 @@
             height: 400px;
             border: 1px solid #ccc;
         }
+        .buttons {
+            margin-bottom: 10px;
+        }
+        button {
+            margin-right: 5px;
+        }
     </style>
 </head>
 <body>
     <h1>Tryit Editor</h1>
     <textarea id="code" placeholder="Type your HTML/CSS/JS here..."></textarea>
+    <div class="buttons">
+        <button onclick="runCode()">Run</button>
+        <button onclick="saveFile()">Save</button>
+        <button onclick="shareUrl()">Share URL</button>
+    </div>
     <iframe id="result"></iframe>
     <script>
-        const codeInput = document.getElementById('code');
-        const resultFrame = document.getElementById('result');
-        
-        codeInput.addEventListener('input', () => {
-            const code = codeInput.value;
-            resultFrame.srcdoc = code;
-        });
+        function runCode() {
+            const codeInput = document.getElementById('code').value;
+            const resultFrame = document.getElementById('result');
+            resultFrame.srcdoc = codeInput;
+        }
+
+        function saveFile() {
+            const code = document.getElementById('code').value;
+            const blob = new Blob([code], { type: 'text/html' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'code.html';
+            a.click();
+        }
+
+        function shareUrl() {
+            const code = document.getElementById('code').value;
+            const encodedCode = encodeURIComponent(code);
+            const url = `${window.location.origin}${window.location.pathname}?code=${encodedCode}`;
+            navigator.clipboard.writeText(url).then(() => {
+                alert('URL copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy URL: ', err);
+            });
+        }
+
+        function loadCodeFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            if (code) {
+                document.getElementById('code').value = decodeURIComponent(code);
+                runCode();
+            }
+        }
+
+        window.onload = loadCodeFromUrl;
     </script>
 </body>
 </html>
