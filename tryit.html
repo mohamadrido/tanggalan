@@ -36,6 +36,7 @@
     <textarea id="code" placeholder="Type your HTML/CSS/JS here..."></textarea>
     <div class="buttons">
         <button onclick="runCode()">Run</button>
+        <button onclick="clearCode()">Clear</button>
         <button onclick="saveFile()">Save</button>
         <input type="file" id="fileInput" accept=".txt,.js,.html,.css" onchange="loadFile()">
     </div>
@@ -47,12 +48,30 @@
             resultFrame.srcdoc = codeInput;
         }
 
+        function clearCode() {
+            document.getElementById('code').value = '';
+        }
+
         function saveFile() {
             const code = document.getElementById('code').value;
-            const blob = new Blob([code], { type: 'text/html' });
+            let fileType = 'text/plain';
+            let extension = '.txt';
+
+            if (code.trim().startsWith('<')) {
+                fileType = 'text/html';
+                extension = '.html';
+            } else if (code.trim().startsWith('/*') || code.trim().startsWith('body') || code.trim().startsWith('.')) {
+                fileType = 'text/css';
+                extension = '.css';
+            } else if (code.trim().startsWith('function') || code.trim().startsWith('var') || code.trim().startsWith('let') || code.trim().startsWith('const')) {
+                fileType = 'text/javascript';
+                extension = '.js';
+            }
+
+            const blob = new Blob([code], { type: fileType });
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
-            a.download = 'code.html';
+            a.download = 'code' + extension;
             a.click();
         }
 
