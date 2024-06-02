@@ -121,10 +121,8 @@
             var blob = new Blob([content], { type: 'text/plain' });
             var url = URL.createObjectURL(blob);
             var a = document.createElement('a');
-            var ext = fileName.split('.').pop();
-            var fileExt = (ext === 'pub') ? '.pub' : '';
             a.href = url;
-            a.download = fileName + fileExt;
+            a.download = fileName;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
