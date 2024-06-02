@@ -114,15 +114,17 @@
 
         function savePrivateKey() {
             var privateKey = document.getElementById('private-key').value;
-            downloadFile(privateKey, 'private_key');
+            downloadFile(privateKey, 'private_key.pem');
         }
 
         function downloadFile(content, fileName) {
             var blob = new Blob([content], { type: 'text/plain' });
             var url = URL.createObjectURL(blob);
             var a = document.createElement('a');
+            var ext = fileName.split('.').pop();
+            var fileExt = (ext === 'pub') ? '.pub' : '';
             a.href = url;
-            a.download = fileName;
+            a.download = fileName + fileExt;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
