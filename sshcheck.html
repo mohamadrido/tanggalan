@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSH Key Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+            margin-bottom: 20px;
+        }
+
+        input[type="file"] {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .details {
+            text-align: left;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SSH Key Checker</h1>
+        <textarea id="ssh-key" placeholder="Paste your SSH key here..."></textarea>
+        <input type="file" id="file-input" accept=".pub,.pem,.key,.txt" />
+        <button id="check-key">Check SSH Key</button>
+        <div class="result" id="result"></div>
+    </div>
+    <script>
+        document.getElementById('check-key').addEventListener('click', checkSSHKey);
+        document.getElementById('file-input').addEventListener('change', handleFileUpload);
+
+        function checkSSHKey() {
+            var sshKey = document.getElementById('ssh-key').value.trim();
+            var resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '';
+
+            if (!sshKey) {
+                resultDiv.innerHTML = 'Please enter an SSH key or upload a file.';
+                return;
+            }
+
+            var keyParts = sshKey.split(' ');
+            if (keyParts.length < 2) {
+                resultDiv.innerHTML = 'Invalid SSH key format.';
+                return;
+            }
+
+            var keyType = keyParts[0];
+            var keyData = keyParts[1];
+
+            var keyInfo = {
+                'ssh-rsa': 'SSH-2 RSA public key',
+                'ssh-dss': 'SSH-2 DSA public key',
+                'ecdsa-sha2-nistp256': 'ECDSA key for curve P-256',
+                'ecdsa-sha2-nistp384': 'ECDSA key for curve P-384',
+                'ecdsa-sha2-nistp521': 'ECDSA key for curve P-521',
+                'ssh-ed25519': 'Ed25519 key'
+            };
+
+            if (keyInfo[keyType]) {
+                var details = `
+                    <p><strong>Key Type:</strong> ${keyType}</p>
+                    <p><strong>Description:</strong> ${keyInfo[keyType]}</p>
+                    <p><strong>Version:</strong> SSH-2</p>
+                    <p><strong>Character Count:</strong> ${sshKey.length}</p>
+                `;
+                resultDiv.innerHTML = details;
+            } else {
+                resultDiv.innerHTML = 'Unknown or unsupported SSH key type.';
+            }
+        }
+
+        function handleFileUpload(event) {
+            var file = event.target.files[0];
+            if (!file) {
+                return;
+            }
+
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var content = e.target.result.trim();
+                document.getElementById('ssh-key').value = content;
+                checkSSHKey();
+            };
+            reader.readAsText(file);
+        }
+    </script>
+</body>
+</html>
