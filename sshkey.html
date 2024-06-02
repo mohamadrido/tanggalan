@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SSH Key Generator</title>
+    <title>SSH Key Generator & Saver</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -67,7 +67,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>SSH Key Generator</h1>
+        <h1>SSH Key Generator & Saver</h1>
         <button id="generate">Generate SSH Keys</button>
         <div>
             <h2>Public Key</h2>
@@ -108,12 +108,13 @@
 
         function savePublicKey() {
             var publicKey = document.getElementById('public-key').value;
-            downloadFile(publicKey, 'public_key.pub');
+            var openSSHKey = publicKey.split(' ')[1]; // Mengambil bagian kunci publik OpenSSH saja
+            downloadFile(openSSHKey, 'public_key.pub');
         }
 
         function savePrivateKey() {
             var privateKey = document.getElementById('private-key').value;
-            downloadFile(privateKey, 'private_key.pem');
+            downloadFile(privateKey, 'private_key');
         }
 
         function downloadFile(content, fileName) {
